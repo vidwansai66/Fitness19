@@ -370,13 +370,13 @@ function moveMascotToNewSpace() {
     const mascot = document.getElementById("mascot");
     if (!mascot) return;
     
-    // Define "empty" horizontal zones along the bottom of the screen
-    // We avoid the extreme corners so he doesn't cover the chatbot or WhatsApp buttons
+    // Define "empty" margin zones on the far left and far right of the screen
+    // This ensures he NEVER overlaps with the center content/boxes.
     const zones = [
-        {x: 20, y: 85}, // Bottom Left-ish
-        {x: 40, y: 85}, // Bottom Center-Left
-        {x: 60, y: 85}, // Bottom Center-Right
-        {x: 80, y: 85}, // Bottom Right-ish
+        {x: 8,  y: 40}, // Mid-Top Left
+        {x: 8,  y: 75}, // Mid-Bottom Left
+        {x: 92, y: 40}, // Mid-Top Right
+        {x: 92, y: 75}, // Mid-Bottom Right
     ];
     
     // Pick random zone different from current
