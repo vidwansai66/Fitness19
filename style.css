@@ -1819,3 +1819,83 @@ p, span, select, button, input, textarea, li {
     opacity: 1;
     transform: translateX(0);
 }
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Typography & Headers */
+    .hero-title {
+        font-size: 3.5rem !important; /* Scale down giant text */
+        line-height: 1.1 !important;
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 2.5rem !important;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem !important;
+        text-align: center;
+        margin: 0 auto 30px auto;
+    }
+
+    /* Hero section centering */
+    .hero-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Grids & Layouts */
+    .schedule-grid, .merch-grid, .membership-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 40px;
+    }
+
+    /* Widgets & Floating Elements */
+    .mascot-container {
+        /* Lock him to the right edge neatly on mobile */
+        left: auto !important;
+        right: 10px !important;
+        top: auto !important;
+        bottom: 90px !important;
+        transform: scale(0.7) !important;
+    }
+
+    .chatbot-window {
+        width: 90vw !important;
+        height: 60vh !important;
+        bottom: 80px !important;
+        left: 5vw !important;
+    }
+
+    .whatsapp-fab {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .whatsapp-fab svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Forms */
+    .checkout-form-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+

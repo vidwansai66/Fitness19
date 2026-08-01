@@ -409,7 +409,7 @@ function initMascotScroll() {
         if (!mascotMoving) {
             mascotMoving = true;
             setMascotState('run');
-            moveMascotToNewSpace();
+            // Mascot stays in place, just runs in place to show movement
         }
         
         clearTimeout(mascotScrollTimeout);
