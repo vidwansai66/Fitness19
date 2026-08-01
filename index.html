@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITNESS 19 | High-Octane Brutalist Fitness & Gym</title>
+    <meta name="description" content="In 2026, we rejected the sterile, corporate gym look. Welcome to Fitness 19. Pitch black, neon accents, high intensity, and raw power. Get your trial now.">
+    <!-- Google Fonts: Syne for heavy headlines and Space Mono for monospaced UI/data -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- DIGITAL NOISE GRAIN OVERLAY -->
+    <div class="noise-grain-overlay" style="display: none;"></div>
+
+    <!-- INTERACTIVE NEON GRID BACKGROUND -->
+    <div class="grid-background-overlay" id="grid-bg"></div>
+
+    <!-- HERO SECTION (Full viewport, background video, skip standard header) -->
+    <section id="hero" class="hero-section">
+        <!-- High-energy video background with fallback gradient -->
+        <div class="video-container">
+            <div class="video-overlay"></div>
+            <video autoplay loop muted playsinline class="bg-video">
+                <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0227e339d2ec050e68d06d4e51ec752&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Overlapping diagonally scrolled kinetic marquee (Visual Noise) -->
+        <div class="diagonal-marquee marquee-left-to-right">
+            <div class="marquee-content">VOLT GREEN &bull; SHRED THE LIMIT &bull; HYPER ACTION &bull; VOLT GREEN &bull; SHRED THE LIMIT &bull; HYPER ACTION &bull; </div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title reveal-text">FITNESS 19</h1>
+            <p class="hero-tagline reveal-text-delay">NEO-BRUTALISM. HIGH-OCTANE ADRENALINE. NO CORPORATE BULLSHIT.</p>
+            <div class="hero-cta-wrapper hover-target-join">
+                <button class="brutalist-btn btn-neon-volt pulse magnetic-button" onclick="openCheckout('Unlimited Pro')">
+                    START YOUR TRIAL
+                </button>
+            </div>
+        </div>
+
+        <!-- Scroll down indicator -->
+        <div class="scroll-indicator">
+            <span>SCROLL DOWN TO UNLEASH STATE</span>
+            <div class="arrow-down">&#8595;</div>
+        </div>
+    </section>
+
+    <!-- FLOATING NAV DOCK (appears after scrolling hero) -->
+    <nav id="floating-nav" class="floating-nav">
+        <div class="nav-logo hover-target-lift" onclick="scrollToSection('hero')">F19</div>
+        <div class="nav-links">
+            <button onclick="scrollToSection('schedule')" class="hover-target-link">SCHEDULE</button>
+            <button onclick="scrollToSection('coaches')" class="hover-target-link">COACHES</button>
+            <button onclick="scrollToSection('memberships')" class="hover-target-link">MEMBERSHIPS</button>
+        </div>
+        <button class="nav-cta btn-neon-pink hover-target-join magnetic-button" onclick="openCheckout('Unlimited Pro')">JOIN NOW</button>
+    </nav>
+
+    <!-- HORIZONTAL TICKER TAPE -->
+    <div class="ticker-tape">
+        <div class="ticker-wrap">
+            <div class="ticker">
+                <span>NO EXCUSES &bull; BEAST MODE ON &bull; PUSH YOUR LIMITS &bull; IRON AND SWEAT &bull; PITCH BLACK ACCENTS &bull; NO HIDDEN FEES &bull; 100% RAW ADRENALINE &bull; NO EXCUSES &bull; BEAST MODE ON &bull; PUSH YOUR LIMITS &bull; IRON AND SWEAT &bull; PITCH BLACK ACCENTS &bull; NO HIDDEN FEES &bull; 100% RAW ADRENALINE &bull;</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ANIMATED STATS COUNTER SECTION -->
+    <section class="stats-counter-section" id="stats-section">
+        <div class="stats-grid">
+            <div class="stat-block">
+                <div class="stat-number" data-target="19" data-suffix="+">0</div>
+                <div class="stat-label">LOCATIONS WORLDWIDE</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-number" data-target="50000" data-suffix="+">0</div>
+                <div class="stat-label">ACTIVE MEMBERS</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-number" data-target="200" data-suffix="+">0</div>
+                <div class="stat-label">CLASSES PER WEEK</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-number" data-target="98" data-suffix="%">0</div>
+                <div class="stat-label">MEMBER RETENTION</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BACKGROUND ROTATION SHAPES -->
+    <!-- Gear shape behind Schedule -->
+    <div class="scroll-shape shape-gear" id="bg-gear">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="18" stroke="#333" stroke-width="8" stroke-dasharray="2 2" />
+            <path d="M50 5v12M50 83v12M5 50h12M83 50h12M18.2 18.2l8.5 8.5M73.3 73.3l8.5 8.5M18.2 81.8l8.5-8.5M73.3 26.7l8.5-8.5M30 13l3.5 11M66.5 76l3.5 11M13 30l11 3.5M76 66.5l11 3.5M13 70l11-3.5M76 33.5l11-3.5M70 13l-3.5 11M33.5 76l-3.5 11" stroke="#333" stroke-width="6" stroke-linecap="square" />
+            <circle cx="50" cy="50" r="8" fill="#111" stroke="#333" stroke-width="4" />
+        </svg>
+    </div>
+
+    <!-- SCHEDULE / CLASSES (Dynamic Filterable Timeline App-like experience) -->
+    <section id="schedule" class="section-container">
+        <div class="section-header">
+            <h2 class="section-headline reveal-scroll">TRAINING TIMELINE</h2>
+            <p class="section-sub">Ditch the PDFs. Filter your weapon of choice below.</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-panel brutalist-border">
+            <div class="filter-group">
+                <span class="filter-label">DAY:</span>
+                <div class="filter-buttons" id="day-filters">
+                    <button class="filter-btn active hover-target-btn" data-day="ALL">ALL</button>
+                    <button class="filter-btn hover-target-btn" data-day="MON">MON</button>
+                    <button class="filter-btn hover-target-btn" data-day="TUE">TUE</button>
+                    <button class="filter-btn hover-target-btn" data-day="WED">WED</button>
+                    <button class="filter-btn hover-target-btn" data-day="THU">THU</button>
+                    <button class="filter-btn hover-target-btn" data-day="FRI">FRI</button>
+                    <button class="filter-btn hover-target-btn" data-day="SAT">SAT</button>
+                    <button class="filter-btn hover-target-btn" data-day="SUN">SUN</button>
+                </div>
+            </div>
+
+            <div class="filter-row-secondary">
+                <div class="filter-group">
+                    <span class="filter-label">COACH:</span>
+                    <select id="coach-filter" class="brutalist-select hover-target-btn">
+                        <option value="ALL">ALL INSTRUCTORS</option>
+                        <option value="Marcus">COACH MARCUS</option>
+                        <option value="Sarah">COACH SARAH</option>
+                        <option value="Jax">COACH JAX</option>
+                        <option value="Zara">COACH ZARA</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">INTENSITY:</span>
+                    <select id="intensity-filter" class="brutalist-select hover-target-btn">
+                        <option value="ALL">ALL INTENSITIES</option>
+                        <option value="Low">LOW EFFORT</option>
+                        <option value="Medium">HIGH-OCTANE</option>
+                        <option value="Beast">BEAST MODE</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Class Cards Container -->
+        <div class="schedule-grid" id="schedule-grid">
+            <!-- Hydrated dynamically -->
+        </div>
+    </section>
+
+    <!-- INTERSECTING DIAGONAL TICKER -->
+    <div class="diagonal-marquee marquee-right-to-left spacer-marquee">
+        <div class="marquee-content">PAIN IS WEAKNESS LEAVING THE BODY &bull; DO THE WORK &bull; PULL THE BAR &bull; NO EXCUSES &bull; </div>
+    </div>
+
+    <!-- Cross shape behind Coaches -->
+    <div class="scroll-shape shape-cross" id="bg-cross">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 5h20v35h35v20H60v35H40V60H5V40h35V5z" stroke="#333" stroke-width="5" stroke-dasharray="4 4" fill="none" />
+            <path d="M45 45h10v10H45V45z" fill="#333" />
+        </svg>
+    </div>
+
+    <!-- COACHES SECTION (Humanizing the brand with high-contrast bio hover state) -->
+    <section id="coaches" class="section-container">
+        <div class="section-header">
+            <h2 class="section-headline reveal-scroll">ARCHITECTS OF PAIN</h2>
+            <p class="section-sub">We don't do influencers. Meet our certified crushers.</p>
+        </div>
+
+        <div class="coaches-grid">
+            <!-- Coach 1 -->
+            <div class="coach-card brutalist-border tilt-card-3d hover-target-lift">
+                <div class="coach-img-container">
+                    <div class="coach-overlay-neon volt"></div>
+                    <div class="coach-placeholder-img">
+                        <span>🏋️‍♂️</span>
+                    </div>
+                </div>
+                <div class="coach-details">
+                    <h3 class="coach-name">COACH MARCUS</h3>
+                    <p class="coach-role">HEAD POWERLIFTER &bull; "THE ANVIL"</p>
+                    <div class="coach-stats-list">
+                        <div class="coach-stat"><span>DEADLIFT MAX:</span> 675 LBS</div>
+                        <div class="coach-stat"><span>EXPERTISE:</span> HYPERTROPHY</div>
+                        <div class="coach-stat"><span>MOTTO:</span> "LIFT OR DIE."</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coach 2 -->
+            <div class="coach-card brutalist-border tilt-card-3d hover-target-lift">
+                <div class="coach-img-container">
+                    <div class="coach-overlay-neon pink"></div>
+                    <div class="coach-placeholder-img">
+                        <span>🏃‍♀️</span>
+                    </div>
+                </div>
+                <div class="coach-details">
+                    <h3 class="coach-name">COACH SARAH</h3>
+                    <p class="coach-role">HIIT MASTER &bull; "THE ACCELERATOR"</p>
+                    <div class="coach-stats-list">
+                        <div class="coach-stat"><span>VO2 MAX:</span> 68 ML/KG/MIN</div>
+                        <div class="coach-stat"><span>EXPERTISE:</span> METCON / SHRED</div>
+                        <div class="coach-stat"><span>MOTTO:</span> "SPEED KILLS."</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coach 3 -->
+            <div class="coach-card brutalist-border tilt-card-3d hover-target-lift">
+                <div class="coach-img-container">
+                    <div class="coach-overlay-neon yellow"></div>
+                    <div class="coach-placeholder-img">
+                        <span>🥊</span>
+                    </div>
+                </div>
+                <div class="coach-details">
+                    <h3 class="coach-name">COACH JAX</h3>
+                    <p class="coach-role">COMBAT / STRENGTH &bull; "THE BRAWLER"</p>
+                    <div class="coach-stats-list">
+                        <div class="coach-stat"><span>RECORD:</span> 18-2-0 AMATEUR</div>
+                        <div class="coach-stat"><span>EXPERTISE:</span> BOXING / CONDITIONING</div>
+                        <div class="coach-stat"><span>MOTTO:</span> "HIT FIRST."</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coach 4 -->
+            <div class="coach-card brutalist-border tilt-card-3d hover-target-lift">
+                <div class="coach-img-container">
+                    <div class="coach-overlay-neon volt"></div>
+                    <div class="coach-placeholder-img">
+                        <span>🚴‍♀️</span>
+                    </div>
+                </div>
+                <div class="coach-details">
+                    <h3 class="coach-name">COACH ZARA</h3>
+                    <p class="coach-role">SPIN & MOBILITY &bull; "THE TORNADO"</p>
+                    <div class="coach-stats-list">
+                        <div class="coach-stat"><span>CADENCE PEAK:</span> 140 RPM</div>
+                        <div class="coach-stat"><span>EXPERTISE:</span> SPIN / FLOW / CORE</div>
+                        <div class="coach-stat"><span>MOTTO:</span> "FIND THE FLOW IN FIRE."</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Star shape behind Memberships -->
+    <div class="scroll-shape shape-star" id="bg-star">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 5l10 30 35 5-30 20 15 35-30-20-30 20 15-35-30-20 35-5L50 5z" stroke="#333" stroke-width="4" stroke-dasharray="3 3" fill="none" />
+            <circle cx="50" cy="50" r="10" fill="none" stroke="#333" stroke-width="3" />
+        </svg>
+    </div>
+
+    <!-- MEMBERSHIPS (Pricing - Tilted middle card, brutalist design) -->
+    <section id="memberships" class="section-container">
+        <div class="section-header">
+            <h2 class="section-headline reveal-scroll">MEMBERSHIP TIERS</h2>
+            <p class="section-sub">No contracts. No cancellation fees. Zero hidden pricing.</p>
+        </div>
+
+        <div class="memberships-grid">
+            <!-- Tier 1: Basic -->
+            <div class="pricing-card brutalist-border tilt-card-3d hover-target-lift">
+                <div class="pricing-header">
+                    <h3 class="tier-title">BASIC SHRED</h3>
+                    <div class="price-container">
+                        <span class="currency">$</span>
+                        <span class="price-number">19</span>
+                        <span class="period">/MO</span>
+                    </div>
+                </div>
+                <ul class="tier-features">
+                    <li>&bull; Access to Single Club</li>
+                    <li>&bull; Full Cardio & Weight Rooms</li>
+                    <li>&bull; Standard Lockers & Showers</li>
+                    <li>&bull; Free Basic Orientation</li>
+                </ul>
+                <button class="pricing-btn brutalist-btn btn-white hover-target-join magnetic-button" onclick="openCheckout('Basic Shred')">
+                    CHOOSE BASIC
+                </button>
+            </div>
+
+            <!-- Tier 2: Unlimited Pro (Tilted 3 degrees, Inverted colors, stand out) -->
+            <div class="pricing-card card-unlimited-pro brutalist-border neon-border-pulse hover-target-lift">
+                <div class="card-accent-badge">MOST POWERFUL</div>
+                <div class="pricing-header">
+                    <h3 class="tier-title">UNLIMITED PRO</h3>
+                    <div class="price-container">
+                        <span class="currency">$</span>
+                        <span class="price-number">39</span>
+                        <span class="period">/MO</span>
+                    </div>
+                </div>
+                <ul class="tier-features">
+                    <li>&bull; Unlimited Access to All Clubs</li>
+                    <li>&bull; All Dynamic Classes & Timelines</li>
+                    <li>&bull; Guest Passes Every Month</li>
+                    <li>&bull; HydroMassage & Tanning Unlimited</li>
+                    <li>&bull; 1x Coach Consultation/Mo</li>
+                </ul>
+                <button class="pricing-btn brutalist-btn btn-black hover-target-join magnetic-button" onclick="openCheckout('Unlimited Pro')">
+                    START TRIAL NOW
+                </button>
+            </div>
+
+            <!-- Tier 3: Beast Platinum -->
+            <div class="pricing-card brutalist-border tilt-card-3d hover-target-lift">
+                <div class="pricing-header">
+                    <h3 class="tier-title">BEAST PLATINUM</h3>
+                    <div class="price-container">
+                        <span class="currency">$</span>
+                        <span class="price-number">59</span>
+                        <span class="period">/MO</span>
+                    </div>
+                </div>
+                <ul class="tier-features">
+                    <li>&bull; Everything in Unlimited Pro</li>
+                    <li>&bull; 24/7 Access Authorization</li>
+                    <li>&bull; Unlimited Personal Coaching (2/mo)</li>
+                    <li>&bull; Custom Nutrition & Stack Plans</li>
+                    <li>&bull; Free Fitness 19 High-Octane Hoodie</li>
+                </ul>
+                <button class="pricing-btn brutalist-btn btn-neon-pink hover-target-join magnetic-button" onclick="openCheckout('Beast Platinum')">
+                    UNLEASH THE BEAST
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHECKOUT DRAWER (Frictionless 1-Click checkout) -->
+    <div id="checkout-drawer" class="checkout-drawer">
+        <div class="drawer-overlay" onclick="closeCheckout()"></div>
+        <div class="drawer-content brutalist-border">
+            <button class="drawer-close hover-target-btn" onclick="closeCheckout()">&times; CLOSE</button>
+            
+            <h2 class="drawer-title">F19 CHECKOUT</h2>
+            <p class="drawer-subtitle">You are seconds away from starting your shift.</p>
+
+            <div class="invoice-summary brutalist-border">
+                <div class="invoice-row">
+                    <span class="invoice-label">MEMBERSHIP TIER:</span>
+                    <span class="invoice-val" id="checkout-tier-name">UNLIMITED PRO</span>
+                </div>
+                <div class="invoice-row">
+                    <span class="invoice-label">TRIAL DAYS:</span>
+                    <span class="invoice-val accent-volt">7 DAYS FREE</span>
+                </div>
+                <div class="invoice-row total-row">
+                    <span class="invoice-label">DUE TODAY:</span>
+                    <span class="invoice-val" id="checkout-price">$0.00</span>
+                </div>
+                <div class="invoice-row renewal-row">
+                    <span class="invoice-label">RECURRING RATE:</span>
+                    <span class="invoice-val" id="checkout-recurring-rate">$39.00/MO</span>
+                </div>
+            </div>
+
+            <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)">
+                <div class="form-group">
+                    <label for="checkout-name">FULL NAME:</label>
+                    <input type="text" id="checkout-name" required placeholder="JOHN DOE" class="brutalist-input hover-target-input">
+                </div>
+
+                <div class="form-group">
+                    <label for="checkout-email">EMAIL ADDRESS:</label>
+                    <input type="email" id="checkout-email" required placeholder="DOE@VOLT.COM" class="brutalist-input hover-target-input">
+                </div>
+
+                <div class="form-group card-group">
+                    <label for="checkout-card">CARD NUMBER:</label>
+                    <div class="card-input-wrapper">
+                        <input type="text" id="checkout-card" required maxlength="19" placeholder="4111 2222 3333 4444" class="brutalist-input hover-target-input">
+                        <span class="card-brand-indicator" id="card-brand">VISA</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="checkout-expiry">EXPIRY:</label>
+                        <input type="text" id="checkout-expiry" required placeholder="MM/YY" maxlength="5" class="brutalist-input hover-target-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-cvv">CVV:</label>
+                        <input type="password" id="checkout-cvv" required placeholder="***" maxlength="4" class="brutalist-input hover-target-input">
+                    </div>
+                </div>
+
+                <button type="submit" class="brutalist-btn btn-neon-volt checkout-submit-btn hover-target-join magnetic-button">
+                    AUTHORIZE & JOIN NOW
+                </button>
+            </form>
+
+            <!-- Success screen overlay within drawer -->
+            <div id="success-screen" class="success-screen">
+                <div class="success-content">
+                    <div class="success-icon">&#10004;</div>
+                    <h3 class="success-title">TRANSACTION SECURED</h3>
+                    <p class="success-msg">Your spot has been authorized. Check your inbox for the digital keycard.</p>
+                    
+                    <div class="ticket brutalist-border">
+                        <div class="ticket-header">FITNESS 19 MEMBER</div>
+                        <div class="ticket-body">
+                            <div class="ticket-row">
+                                <span>MEMBER:</span>
+                                <span id="ticket-member-name">JOHN DOE</span>
+                            </div>
+                            <div class="ticket-row">
+                                <span>TIER:</span>
+                                <span id="ticket-tier-name">UNLIMITED PRO</span>
+                            </div>
+                            <div class="ticket-row">
+                                <span>ID:</span>
+                                <span id="ticket-member-id">#F19-2026-X892</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="brutalist-btn btn-neon-pink hover-target-btn" onclick="closeCheckout()">LET'S LIFT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer brutalist-border-top">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>FITNESS 19</h2>
+                <p>HIGH-OCTANE BRUTALISM. ESTABLISHED 2026.</p>
+            </div>
+            <div class="footer-links-col">
+                <h4>SECTIONS</h4>
+                <a href="#hero" onclick="scrollToSection('hero'); return false;" class="hover-target-link">Hero</a>
+                <a href="#schedule" onclick="scrollToSection('schedule'); return false;" class="hover-target-link">Schedule</a>
+                <a href="#coaches" onclick="scrollToSection('coaches'); return false;" class="hover-target-link">Coaches</a>
+                <a href="#memberships" onclick="scrollToSection('memberships'); return false;" class="hover-target-link">Memberships</a>
+            </div>
+            <div class="footer-details-col">
+                <h4>CLUB DETAILS</h4>
+                <p>1900 ADRENALINE WAY, GYM DISTRICT</p>
+                <p>TEL: 1-800-VOLT-GYM</p>
+                <p>OPEN 24/7/365</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 FITNESS 19. REJECT STABILITY. EMBRACE KINETIC ENERGY.
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/916304088189?text=Hi%20F19%20Gym!%20I'd%20like%20more%20info%20about%20getting%20started." target="_blank" class="whatsapp-fab" id="whatsapp-fab">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="whatsapp-tooltip">Chat with us!</span>
+    </a>
+
+    <!-- GYM CHATBOT -->
+    <div class="chatbot-container" id="chatbot-container">
+        <!-- Chat Window -->
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <h3>F19 AI COACH</h3>
+                <button class="chatbot-close" id="chatbot-close">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="chat-msg bot-msg">
+                    <strong>COACH:</strong> What's up? I'm your F19 AI Coach. Ask me about workouts, schedules, protein, or how to get started!
+                </div>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbot-input" placeholder="Ask something..." autocomplete="off">
+                <button id="chatbot-send">SEND</button>
+            </div>
+        </div>
+
+        <!-- Chat FAB (Floating Action Button) -->
+        <button class="chatbot-fab" id="chatbot-fab">
+            <!-- Kettlebell SVG Icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 11v-4a5 5 0 0 1 10 0v4"/>
+                <rect x="4" y="11" width="16" height="10" rx="3" ry="3"/>
+                <path d="M9 11v10"/>
+                <path d="M15 11v10"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- CUTE MASCOT (Multi-state Gym Activities) -->
+    <div class="mascot-container is-dumbbells" id="mascot">
+        <!-- STATE 1: DUMBBELLS -->
+        <svg viewBox="0 0 100 100" class="cute-mascot mascot-dumbbells">
+            <rect x="42" y="51" width="16" height="25" fill="#444" rx="4"/>
+            <path d="M 46 75 L 42 95" stroke="#FFD1A9" stroke-width="8" stroke-linecap="round"/>
+            <path d="M 54 75 L 58 95" stroke="#FFD1A9" stroke-width="8" stroke-linecap="round"/>
+            <g class="anim-dumbbell">
+                <rect x="15" y="30" width="70" height="4" fill="#777" rx="2"/>
+                <rect x="10" y="20" width="12" height="24" fill="#222" rx="3"/>
+                <rect x="78" y="20" width="12" height="24" fill="#222" rx="3"/>
+                <path d="M 42 55 L 25 32" stroke="#FFD1A9" stroke-width="7" stroke-linecap="round"/>
+                <path d="M 58 55 L 75 32" stroke="#FFD1A9" stroke-width="7" stroke-linecap="round"/>
+                <circle cx="25" cy="32" r="5" fill="#FFD1A9"/>
+                <circle cx="75" cy="32" r="5" fill="#FFD1A9"/>
+            </g>
+            <g transform="translate(0, 0)">
+                <circle cx="50" cy="35" r="16" fill="#FFD1A9"/>
+                <rect x="34" y="25" width="32" height="6" fill="#FF007F"/>
+                <path d="M 66 28 L 74 23 L 74 31 Z" fill="#FF007F"/>
+                <circle cx="44" cy="37" r="2.5" fill="#000"/>
+                <circle cx="56" cy="37" r="2.5" fill="#000"/>
+                <circle cx="40" cy="40" r="3" fill="#FF9E9E" opacity="0.8"/>
+                <circle cx="60" cy="40" r="3" fill="#FF9E9E" opacity="0.8"/>
+                <path d="M 46 43 Q 50 48 54 43" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+            </g>
+        </svg>
+
+        <!-- STATE 2: RUNNING (Scrolling) -->
+        <svg viewBox="0 0 100 100" class="cute-mascot mascot-run" style="display: none;">
+            <g class="anim-legs">
+                <path d="M 45 70 L 30 90" stroke="#FFD1A9" stroke-width="8" stroke-linecap="round"/>
+                <path d="M 55 70 L 70 90" stroke="#FFD1A9" stroke-width="8" stroke-linecap="round"/>
+            </g>
+            <rect x="35" y="45" width="20" height="30" fill="#444" rx="5" transform="rotate(20 45 60)"/>
+            <g class="anim-arms">
+                <path d="M 40 50 L 20 60" stroke="#FFD1A9" stroke-width="7" stroke-linecap="round"/>
+                <path d="M 50 55 L 75 60" stroke="#FFD1A9" stroke-width="7" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(-5, -5)">
+                <circle cx="50" cy="35" r="16" fill="#FFD1A9"/>
+                <rect x="34" y="25" width="32" height="6" fill="#FF007F"/>
+                <path d="M 34 28 L 26 23 L 26 31 Z" fill="#FF007F"/>
+                <circle cx="48" cy="37" r="2.5" fill="#000"/>
+                <circle cx="58" cy="37" r="2.5" fill="#000"/>
+                <circle cx="44" cy="40" r="3" fill="#FF9E9E" opacity="0.8"/>
+                <circle cx="62" cy="40" r="3" fill="#FF9E9E" opacity="0.8"/>
+                <path d="M 50 43 Q 54 48 58 43" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+            </g>
+        </svg>
+
+        <!-- STATE 3: PUSHUPS -->
+        <svg viewBox="0 0 100 100" class="cute-mascot mascot-pushups" style="display: none;">
+            <g class="anim-pushup">
+                <rect x="25" y="70" width="40" height="14" fill="#444" rx="4" transform="rotate(10 45 75)"/>
+                <path d="M 25 78 L 5 85" stroke="#FFD1A9" stroke-width="8" stroke-linecap="round"/>
+                <g transform="translate(15, 38)">
+                    <circle cx="50" cy="35" r="16" fill="#FFD1A9"/>
+                    <rect x="35" y="24" width="28" height="6" fill="#FF007F" transform="rotate(15 50 25)"/>
+                    <circle cx="42" cy="37" r="2.5" fill="#000"/>
+                    <circle cx="54" cy="37" r="2.5" fill="#000"/>
+                    <circle cx="38" cy="40" r="3" fill="#FF9E9E" opacity="0.8"/>
+                    <circle cx="58" cy="40" r="3" fill="#FF9E9E" opacity="0.8"/>
+                    <path d="M 44 43 Q 48 48 52 43" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                </g>
+                <path class="anim-pushup-arms" d="M 55 78 L 55 95" stroke="#FFD1A9" stroke-width="8" stroke-linecap="round"/>
+            </g>
+            <line x1="5" y1="95" x2="95" y2="95" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+
+        <!-- STATE 4: BOXING -->
+        <svg viewBox="0 0 100 100" class="cute-mascot mascot-boxing" style="display: none;">
+            <rect x="75" y="10" width="20" height="50" fill="#ccff00" rx="10"/>
+            <line x1="85" y1="0" x2="85" y2="10" stroke="#777" stroke-width="3"/>
+            
+            <rect x="25" y="51" width="16" height="25" fill="#444" rx="4" transform="rotate(15 33 63)"/>
+            <path d="M 30 75 L 20 95" stroke="#FFD1A9" stroke-width="8" stroke-linecap="round"/>
+            <path d="M 35 75 L 45 95" stroke="#FFD1A9" stroke-width="8" stroke-linecap="round"/>
+            
+            <g transform="translate(-15, 0)">
+                <circle cx="50" cy="35" r="16" fill="#FFD1A9"/>
+                <rect x="34" y="25" width="32" height="6" fill="#FF007F"/>
+                <path d="M 34 28 L 26 23 L 26 31 Z" fill="#FF007F"/>
+                <circle cx="48" cy="37" r="2.5" fill="#000"/>
+                <circle cx="58" cy="37" r="2.5" fill="#000"/>
+                <circle cx="44" cy="40" r="3" fill="#FF9E9E" opacity="0.8"/>
+                <circle cx="62" cy="40" r="3" fill="#FF9E9E" opacity="0.8"/>
+                <path d="M 50 43 Q 54 48 58 43" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+            </g>
+
+            <g class="anim-punch-1">
+                <path d="M 30 60 L 50 50 L 75 55" stroke="#FFD1A9" stroke-width="7" stroke-linecap="round" fill="none"/>
+                <circle cx="75" cy="55" r="8" fill="#FF007F"/>
+            </g>
+            <g class="anim-punch-2">
+                <path d="M 35 65 L 55 60 L 70 45" stroke="#FFD1A9" stroke-width="7" stroke-linecap="round" fill="none"/>
+                <circle cx="70" cy="45" r="8" fill="#FF007F"/>
+            </g>
+        </svg>
+
+        <!-- STATE 5: JUMP ROPE -->
+        <svg viewBox="0 0 100 100" class="cute-mascot mascot-jumprope" style="display: none;">
+            <g class="anim-jump">
+                <rect x="42" y="46" width="16" height="25" fill="#444" rx="4"/>
+                <path d="M 46 71 L 42 85" stroke="#FFD1A9" stroke-width="8" stroke-linecap="round"/>
+                <path d="M 54 71 L 58 85" stroke="#FFD1A9" stroke-width="8" stroke-linecap="round"/>
+                
+                <path d="M 42 50 L 25 65" stroke="#FFD1A9" stroke-width="7" stroke-linecap="round"/>
+                <path d="M 58 50 L 75 65" stroke="#FFD1A9" stroke-width="7" stroke-linecap="round"/>
+                <circle cx="25" cy="65" r="4" fill="#FFD1A9"/>
+                <circle cx="75" cy="65" r="4" fill="#FFD1A9"/>
+
+                <g transform="translate(0, -5)">
+                    <circle cx="50" cy="35" r="16" fill="#FFD1A9"/>
+                    <rect x="34" y="25" width="32" height="6" fill="#FF007F"/>
+                    <path d="M 66 28 L 74 23 L 74 31 Z" fill="#FF007F"/>
+                    <circle cx="44" cy="37" r="2.5" fill="#000"/>
+                    <circle cx="56" cy="37" r="2.5" fill="#000"/>
+                    <circle cx="40" cy="40" r="3" fill="#FF9E9E" opacity="0.8"/>
+                    <circle cx="60" cy="40" r="3" fill="#FF9E9E" opacity="0.8"/>
+                    <path d="M 46 43 Q 50 48 54 43" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                </g>
+            </g>
+            <path class="anim-rope" d="M 25 65 Q 50 120 75 65" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
